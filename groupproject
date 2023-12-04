@@ -1,0 +1,93 @@
+import turtle
+import random
+
+# Function to draw the Japan flag
+def draw_japan_flag():
+    turtle.penup()
+    turtle.goto(-200, 150)  # Adjusted starting position
+
+    # Draw the white rectangle
+    turtle.color("snow")
+    turtle.pendown()
+    turtle.begin_fill()
+    for x in range(2):
+        for xx in range(2):
+            turtle.forward(400)
+            turtle.right(90)
+            turtle.forward(220)
+            turtle.right(90)
+    turtle.end_fill()
+
+    # Draw the red circle
+    turtle.penup()
+    turtle.goto(0, 0)
+    turtle.pendown()
+    turtle.color("red")
+    turtle.begin_fill()
+    turtle.circle(50)
+    turtle.end_fill()
+
+    return "japan"  # Return the country associated with the drawn flag
+
+# draw the Bangladesh flag
+def draw_bangladesh_flag():
+    turtle.penup()
+    turtle.goto(-200, 150)
+    turtle.pendown()
+    turtle.color("green")  # Background color
+    turtle.begin_fill()
+    for x in range(2):
+        for xx in range(2):
+            turtle.forward(400)
+            turtle.right(90)
+            turtle.forward(220)
+            turtle.right(90)
+    turtle.end_fill()
+
+    # Draw the red circle
+    turtle.penup()
+    turtle.goto(0, 0)  
+    turtle.pendown()
+    turtle.color("red")  # Circle color
+    turtle.begin_fill()
+    turtle.circle(50)
+    turtle.end_fill()
+
+    return "bangladesh"  # Return the country associated with the drawn flag
+
+
+def draw_random_flag():
+    flags = [draw_japan_flag, draw_bangladesh_flag]
+    return random.choice(flags)()  
+
+# Function to prompt user for a guess
+def guess_flag():
+    answer = input("Guess the country's flag: ").lower()
+    return answer
+
+
+def turtle_says(message):
+    turtle.penup()
+    turtle.goto(0, -200)
+    turtle.pendown()
+    turtle.color("black")
+    turtle.write(message, align="center", font=("Times", 16, "bold"))
+
+
+def main():
+    turtle.speed(5)
+    
+    correct_country = draw_random_flag()  
+    user_guess = guess_flag()
+
+    if user_guess == correct_country:
+        turtle_says(f"You're right! It's the flag of {correct_country.capitalize()}.")
+    else:
+        turtle_says(f"Sorry, that's not correct. The correct answer is {correct_country.capitalize()}.")
+
+    turtle.mainloop()  
+
+if __name__ == "__main__":
+    main()
+
+#this is a group project for ITCS-1140. the group members are Ifitihaz and Rashed along myself.
